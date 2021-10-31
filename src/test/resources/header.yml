@@ -1,0 +1,11 @@
+# this is a header
+# header line 2
+---
+
+# this is not a header
+# not header line 2
+hello: hi
+nested:
+  # this is not a header
+  # not header line 2
+  hello: hi

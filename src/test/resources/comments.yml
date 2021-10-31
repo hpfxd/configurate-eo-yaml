@@ -1,0 +1,15 @@
+# comment 1
+test-mapping:
+  # comment 2
+  test-scalar: "hello"
+
+# comment 3
+test-sequence:
+  # comment 4
+  - "element 1"
+
+# comment line 1
+# comment line 2
+multiple-lines: "hey"
+
+no-comment: "hi"

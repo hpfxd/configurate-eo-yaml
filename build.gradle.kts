@@ -7,7 +7,7 @@ plugins {
 
 group = "com.hpfxd.configurate"
 version = "1.0.0"
-description = "YAML format loader for Configurate implemented using eo-yaml."
+description = "YAML loader for Configurate implemented using eo-yaml."
 
 repositories {
     mavenCentral()
@@ -29,8 +29,6 @@ tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
 
-// The following settings are for publishing the project to a repository.
-
 java {
     withJavadocJar()
     withSourcesJar()
@@ -48,6 +46,8 @@ publishing {
 
             pom {
                 url.set("https://github.com/hpfxd/configurate-eo-yaml")
+                description.set(project.description)
+                name.set(project.name)
 
                 developers {
                     developer {
@@ -75,14 +75,23 @@ publishing {
 
     repositories {
         maven {
-            name = "hpfxd-repo"
+            name = "ossrh"
 
-            url = uri("https://repo.hpfxd.com/releases/")
+            url = if (version.toString().endsWith("-SNAPSHOT")) {
+                uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+            } else {
+                uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            }
 
             credentials {
-                username = property("repository.hpfxd.username") as String
-                password = property("repository.hpfxd.password") as String
+                username = property("ossrhUsername") as String
+                password = property("ossrhPassword") as String
             }
         }
     }
+}
+
+signing {
+    sign(publishing.publications["mavenJava"])
+    useGpgCmd()
 }

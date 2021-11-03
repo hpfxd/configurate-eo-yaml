@@ -15,13 +15,10 @@ eo-yaml both properly preserves entry ordering, and supports round-tripping comm
 
 ## Usage
 
-This project is published to [repo.hpfxd.com](https://repo.hpfxd.com/releases/). If you're using Maven or Gradle, just
-add the following to your build script.
-
 **Gradle**
 ```kotlin
 repositories {
-    maven(url = "https://repo.hpfxd.com/releases/")
+    mavenCentral()
 }
 
 dependencies {
@@ -31,19 +28,12 @@ dependencies {
 
 **Maven**
 ```xml
-<repositories>
-    <repository>
-        <id>hpfxd-repo</id>
-        <url>https://repo.hpfxd.com/releases/</url>
-    </repository>
-</repositories>
-
 <dependencies>
-<dependency>
-    <groupId>com.hpfxd.configurate</groupId>
-    <artifactId>configurate-eo-yaml</artifactId>
-    <version>1.0.0</version>
-</dependency>
+    <dependency>
+        <groupId>com.hpfxd.configurate</groupId>
+        <artifactId>configurate-eo-yaml</artifactId>
+        <version>1.0.0</version>
+    </dependency>
 </dependencies>
 ```
 
